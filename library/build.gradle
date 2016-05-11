@@ -1,0 +1,46 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion '23.0.3'
+
+    defaultConfig {
+        versionCode 1
+        versionName '0.1.2'
+    }
+
+    compileOptions {
+        sourceCompatibility jdk
+        targetCompatibility jdk
+    }
+}
+
+// android linter imports
+
+configurations {
+    lintChecks
+}
+
+dependencies {
+    lintChecks project(path: ':linter', configuration: 'lintChecks')
+}
+
+task copyLinterJar(type: Copy) {
+    from(configurations.lintChecks) {
+        rename { 'lint.jar' }
+    }
+    into 'build/intermediates/lint/'
+}
+
+project.afterEvaluate {
+    def compileLintTask = project.tasks.find { it.name == 'compileLint' }
+    compileLintTask.dependsOn(copyLinterJar)
+}
+
+// android maven exports
+
+apply plugin: 'com.github.dcendents.android-maven'
+group = "com.github.tynn"
+
+artifacts {
+}
