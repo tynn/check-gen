@@ -35,8 +35,8 @@ public class CheckGenVisitor extends ForwardingAstVisitor {
 
     @Override
     public boolean visitImportDeclaration(ImportDeclaration node) {
-        String pkg = mContext.getMainProject().getPackage();
-        if (pkg != null) {
+        String pkg = mContext.getProject().getPackage();
+        if (pkg != null && !pkg.equals("")) {
             String name = node.asFullyQualifiedName();
             if (name.endsWith(NAME) && !name.equals(pkg + NAME)) {
                 mContext.report(BUILD_CONFIG, node, mContext.getLocation(node), MSG);
