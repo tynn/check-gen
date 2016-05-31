@@ -5,8 +5,9 @@ android {
     buildToolsVersion '23.0.3'
 
     defaultConfig {
-        versionCode 3
-        versionName '0.2.1'
+        minSdkVersion 4
+        versionCode 4
+        versionName '0.2.2'
     }
 
     compileOptions {

@@ -10,7 +10,7 @@ Installation
 
 Get the latest release from the [JitPack repository](https://jitpack.io/#tynn/check-gen)
 
-    compile 'com.github.tynn:check-gen:0.2.1'
+    compile 'com.github.tynn:check-gen:0.2.2'
 
 
 License
